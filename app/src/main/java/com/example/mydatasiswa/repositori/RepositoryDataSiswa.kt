@@ -1,8 +1,12 @@
 package com.example.mydatasiswa.repositori
 
+import com.example.mydatasiswa.apiservice.ServiceApiSiswa
+import com.example.mydatasiswa.modeldata.DataSiswa
+import retrofit2.Response
+
 interface RepositoryDataSiswa {
     suspend fun getDataSiswa() : List<DataSiswa>
-    suspend fun postDataSiswa(dataSiswa: DataSiswa) : retrofit2.Response<Void>
+    suspend fun postDataSiswa(dataSiswa: DataSiswa) : Response<Void>
 }
 
 class JaringanRepositoryDataSiswa(
@@ -12,6 +16,6 @@ class JaringanRepositoryDataSiswa(
     override suspend fun getDataSiswa() : List<DataSiswa> =
         serviceApiSiswa.getSiswa()
 
-    override suspend fun postDataSiswa(dataSiswa: DataSiswa): retrofit2.Response<Void> =
+    override suspend fun postDataSiswa(dataSiswa: DataSiswa): Response<Void> =
         serviceApiSiswa.postSiswa(dataSiswa)
 }
